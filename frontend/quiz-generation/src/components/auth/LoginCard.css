@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@800&display=swap');
+.Containercard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(253,157,216);
+    background: linear-gradient(45deg, rgba(253,157,216,1) 13%, rgba(211,166,194,1) 47%, rgba(46,163,221,1) 96%);
+}
+.Containercard .card {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: rgb(36, 36, 36);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.Containercard .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 55%;
+    background:#2ea3dd;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+.Containercard .card:hover:before {
+    clip-path: circle(300px at 80% -30%);
+}
+.Containercard .card::after {
+    content: 'Teacher';
+    position: absolute;
+    top:44%;
+    left: 5%;
+    font-size: 90px;
+    font-weight: 800;
+    font-family: 'Mukta', sans-serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.06);
+}
+.Containercard .card .imgbox {
+    position: absolute;
+    width: 320px;
+    top: 20%;
+    left: 0%;
+    transform: translateX(0%);
+    z-index: 111111;
+    width: 100%;
+    height: 220px;
+    transition: 0.5s;
+}
+.Containercard .card:hover .imgbox {
+    top: 10%;
+    transform: translateX(0% 0%);
+}
+.Containercard .card .imgbox img {
+    position: absolute;
+    width: 270px;
+    top: -20%;
+    left: 8%;
+    transform: translateX(-0%,-8%)rotate(-25deg);
+}
+.Containercard .card .boutonBox {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    transform: translateX(0%);
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.Containercard .card:hover .boutonBox  {
+    bottom: 13%;
+    transform: translateX(0% 0%);
+}
+
+.Containercard .card .boutonBox h2 {
+    font-family: 'Mukta', sans-serif;
+    font-size: 22px;
+    color: white;
+    opacity: 0;
+}
+.Containercard .card .myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	font-family: 'Mukta', sans-serif;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+	font-weight:bold;
+	padding:10px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    margin-top: 20px;
+}
+.Containercard .card .myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+    color: white;
+}
+.Containercard .card .myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.Containercard .card:hover .myButton ,.Containercard .card:hover .boutonBox h2  {
+    opacity: 1;
+}
+
+/*****************************************Seconde card ********************************************/
+.Containercard .card2 {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: #232323;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-left: 15%;
+}
+.Containercard .card2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    background:#fd9dd8;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+.Containercard .card2:hover:before {
+    clip-path: circle(300px at 80% -30%);
+}
+.Containercard .card2::after {
+    content: 'Student';
+    position: absolute;
+    top:52%;
+    left: 0;
+    font-size: 51px;
+    font-weight: 800;
+    font-family: 'Mukta', sans-serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.06);
+}
+.Containercard .card2 .imgbox {
+    position: absolute;
+    width: 320px;
+    top: 20%;
+    left: 0%;
+    transform: translateX(0%);
+    z-index: 111111;
+    width: 100%;
+    height: 220px;
+    transition: 0.5s;
+}
+.Containercard .card2:hover .imgbox {
+    top: 10%;
+    transform: translateX(0% 0%);
+}
+.Containercard .card2 .imgbox img {
+    position: absolute;
+    width: 290px;
+    top: 0%;
+    left: 4.5%;
+    transform: translateX(-0%,-8%)rotate(-25deg);
+}
+.Containercard .card2 .boutonBox {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    transform: translateX(0%);
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.Containercard .card2:hover .boutonBox  {
+    bottom: 12%;
+    transform: translateX(0% 0%);
+}
+
+.Containercard .card2 .boutonBox h2 {
+    font-family: 'Mukta', sans-serif;
+    font-size: 22px;
+    color: white;
+    opacity: 0;
+}
+.Containercard .card2 .myButton {
+	box-shadow: 0px 10px 14px -7px #f770a6;
+	background:linear-gradient(to bottom, #fd72f9 5%, #fa78c6 100%);
+	background-color:#ff4cf9;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	font-family: 'Mukta', sans-serif;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+	font-weight:bold;
+	padding:10px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #fc49c3;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    margin-top: 20px;
+}
+.Containercard .card2 .myButton:hover {
+	background:linear-gradient(to bottom, #ff4cb7 5%, #ff4cf9 100%);
+	background-color:#ff4cb7;
+    color: white;
+}
+.Containercard .card2 .myButton:active {
+    position:relative;
+	top:1px;
+}
+
+.Containercard .card2:hover .myButton ,.Containercard .card2:hover .boutonBox h2  {
+    opacity: 1;
+}

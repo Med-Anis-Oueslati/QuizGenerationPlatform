@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./LoginStudent.css";
+import "./LoginTeacher.css";
+
 
 import { message, Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/alertSlice";
 
-function LoginStudent() {
+function LoginTeacher() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(false);
@@ -136,7 +137,7 @@ function LoginStudent() {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here ?</h3>
-
+            
             <button className="btinn transparent" onClick={handleSignUpClick}>
               Sign up
             </button>
@@ -162,4 +163,4 @@ function LoginStudent() {
   );
 }
 
-export default LoginStudent;
+export default LoginTeacher;

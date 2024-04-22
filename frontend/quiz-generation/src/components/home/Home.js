@@ -7,6 +7,7 @@ import "./Home.css";
 import Contactus from "../contactus/Contactus";
 import ServicePage from "../services/ServicePage";
 import Typewriter from "./TypeWriter";
+import LoginCard from "../auth/LoginCard"
 import { Link } from "react-router-dom";
 const Home = () => {
   useEffect(() => {
@@ -34,7 +35,7 @@ const Home = () => {
             {" "}
             <Link to="/logincard" className="signtxt">
               {" "}
-              <span>Sign up</span>
+              <span>Log in</span>
             </Link>{" "}
           </button>
         </div>

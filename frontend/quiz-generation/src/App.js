@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home"; // Import your Home component
 import Auth from "./components/auth/Auth";
-import LoginStudent from "./components/auth/LoginStudent";
 import RegistrationForm from "./components/auth/RegistrationForm";
 import Dashboard from "./components/auth/Dashboard";
 import Error from "./components/auth/Error";
@@ -20,11 +19,12 @@ import ProtectedRoute from "./components/protectRouter/ProtectRouter";
 import ApplyTeacher from "./components/teacher/ApplyTeacher";
 import ListTeacher from "./components/teacher/ListTeacher";
 import ListStudent from "./components/teacher/ListStudent";
-import LoginCard from "./components/loginCard/LoginCard";
 import Contactus from "./components/contactus/Contactus";
 import RegisterStudent from "./components/auth/RegisterStudent";
 import TeacherRegistration from "./components/auth/TeacherRegistration";
-
+import LoginCard from "./components/auth/LoginCard";
+import LoginTeacher from "./components/auth/LoginTeacher";
+import LoginStudent from "./components/auth/LoginStudent";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
 
@@ -46,6 +46,9 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/teacherauth" element={<TeacherRegistration />} />
           <Route exact path="/Teacherapp" element={<TeacherHome />} />
+          <Route exact path="/LoginCard" element={<LoginCard />} />
+          <Route exact path="/LoginTeacher" element={<LoginTeacher />} />
+          <Route exact path="/LoginStudent" element={<LoginStudent />} />
           <Route
             exact
             path="/Teacherapp/applyTeacher"
