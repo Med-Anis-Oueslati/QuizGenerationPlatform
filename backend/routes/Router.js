@@ -4,8 +4,6 @@ const teacherdb = require("../models/TeacherSchema");
 const studentdb = require("../models/StudentSchema");
 const mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
-const authentificateStudent = require("../middleware/AuthentificateStudent");
-const authentificateTeacher = require("../middleware/AuthetificateTeacher");
 const {
   registerControllerForTeacher,
   registerControllerForStudent,
@@ -18,7 +16,9 @@ const {
 } = require("../controllers/UserControl");
 const teacherModel = require("../models/TeacherModel");
 const studentModel = require("../models/StudentModel");
-
+const AuthentificationMiddleware = require("../middleware/AuthentificationMiddleware");
+const AuthentificateTeacher = require("../middleware/AuthetificateTeacher");
+const AuthentificateStudent = require("../middleware/AuthentificateStudent");
 
 //Teacher Registration
 router.post("/registerTeacher", async (req, res) => {
@@ -51,7 +51,6 @@ router.post("/registerTeacher", async (req, res) => {
     res.status(422).json(error);
   }
 });
-
 
 //Student Registration
 router.post("/registerStudent", async (req, res) => {
@@ -123,7 +122,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//student login 
+//student login
 
 router.post("/login", async (req, res) => {
   // console.log(req.body)
@@ -161,4 +160,159 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//Teacher Valid
 
+router.get("/teacherValid", AuthentificateTeacher, async (req, res) => {
+  try {
+    const ValidTeacherOne = await teacherdb.findOne({ _id: req.teacherId });
+    if (ValidTeacherOne) {
+      res.status(201).json({ status: 201, ValidTeacherOne });
+    } else {
+      return res.status(404).json({ error: "Teacher not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({ status: 401, error });
+  }
+});
+
+//student Valid
+
+router.get("/studentValid", AuthentificateStudent, async (req, res) => {
+  try {
+    const ValidStudentOne = await studentdb.findOne({ _id: req.studentId });
+    if (ValidStudentOne) {
+      res.status(201).json({ status: 201, ValidStudentOne });
+    } else {
+      return res.status(404).json({ error: "Student not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({ status: 401, error });
+  }
+});
+
+//teacher lougout
+
+router.get("/logoutTeacher", AuthentificateTeacher, async (req, res) => {
+  try {
+    req.rootUser.tokens = req.rootUser.tokens.filter((curelem) => {
+      return curelem.token !== req.token;
+    });
+
+    res.clearCookie("teachercookie", { path: "/" });
+
+    req.rootUser.save();
+    res.status(201).json({ status: 201 });
+  } catch (error) {
+    res.status(401).json({ status: 401, error });
+  }
+});
+
+//logoutStudent
+router.get("/logoutStudent", AuthentificateStudent, async (req, res) => {
+  try {
+    req.rootUser.tokens = req.rootUser.tokens.filter((curelem) => {
+      return curelem.token !== req.token;
+    });
+
+    res.clearCookie("studentcookie", { path: "/" });
+
+    req.rootUser.save();
+    res.status(201).json({ status: 201 });
+  } catch (error) {
+    res.status(401).json({ status: 401, error });
+  }
+});
+
+//all student
+
+router.get("/allStudents", async (req, res) => {
+  try {
+    const students = await studentdb.find(
+      {},
+      { username: 1, email: 1, _id: 0 }
+    );
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+router.get("/allStudents/:id", async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const student = await studentdb.findOne({ _id });
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+    res.status(200).json(student);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+//update student
+router.put("/allStudents/:id", async (req, res) => {
+  const { username, email } = req.body;
+  try {
+    const updatedStudent = await studentdb.findOneAndUpdate(
+      { _id: req.params.id },
+      { username, email },
+      { new: true }
+    );
+    if (!updatedStudent) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+    res.status(200).json({ success: "Student updated successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+//delete patient
+router.delete("/allStudents/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const student = await studentdb.findByIdAndDelete(id);
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+    res.status(200).json({ message: "Student deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+//teacher
+//login teacher || POST
+router.post("/teacherLogin", loginControllerForTeacher);
+//register teacher || POST
+router.post(
+  "/getTeacherData",
+  AuthentificationMiddleware,
+  authControllerForTeacher
+);
+
+router.get("/allTeachers", async (req, res) => {
+  try {
+    const teachers = await teacherModel.find();
+    res.status(200).send({ success: true, teachers: teachers });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: `Error in fetching teachers ${error.message}`,
+    });
+  }
+});
+
+//home ||POST
+router.post(
+  "/apply-teachers",
+  AuthentificationMiddleware,
+  applyTeacherController
+);
+
+module.exports = router;

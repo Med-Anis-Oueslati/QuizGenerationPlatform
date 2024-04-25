@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const DB =
-  "mongodb+srv://mohamedanisoueslati:AnisKarim@cluster0.dsgdpat.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://mohamedanisoueslati:ChAidlzqhFQEsfzT@cluster0.dsgdpat.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose
   .connect(DB, {

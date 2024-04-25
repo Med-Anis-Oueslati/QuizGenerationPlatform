@@ -12,7 +12,7 @@ const port = 8009;
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies
 app.use(cors()); // Enable CORS
-// app.use(router); // Mount router
+app.use(router); // Mount router
 
 // Start the server
 app.listen(port, () => {
