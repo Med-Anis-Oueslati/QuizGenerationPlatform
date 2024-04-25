@@ -21,7 +21,7 @@ import ListTeacher from "./components/teacher/ListTeacher";
 import ListStudent from "./components/teacher/ListStudent";
 import Contactus from "./components/contactus/Contactus";
 import RegisterStudent from "./components/auth/RegisterStudent";
-import TeacherRegistration from "./components/auth/TeacherRegistration";
+import RegisterTeacher from "./components/auth/RegisterTeacher";
 import LoginCard from "./components/auth/LoginCard";
 import LoginTeacher from "./components/auth/LoginTeacher";
 import LoginStudent from "./components/auth/LoginStudent";
@@ -34,21 +34,19 @@ function App() {
         <Routes>
           {/* Set the exact path for Home as the default route */}
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/LoginCard" element={<LoginCard />} />
-          <Route exact path="/studentauth" element={<LoginStudent />} />
-          <Route exact path="/registerr" element={<RegisterStudent />} />
-          <Route exact path="/dash/registerp" element={<RegistrationForm />} />
-          <Route exact path="/dash/patients" element={<ListStudent />} />
-          <Route exact path="/dash/Teacher" element={<ListTeacher />} />
           <Route exact path="/services" element={<ServicePage />} />
           <Route exact path="/contactus" element={<Contactus />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/teacherauth" element={<TeacherRegistration />} />
-          <Route exact path="/Teacherapp" element={<TeacherHome />} />
           <Route exact path="/LoginCard" element={<LoginCard />} />
-          <Route exact path="/LoginTeacher" element={<LoginTeacher />} />
           <Route exact path="/LoginStudent" element={<LoginStudent />} />
+          <Route exact path="/LoginTeacher" element={<LoginTeacher />} />
+          <Route exact path="/dash/registerp" element={<RegistrationForm />} />
+          <Route exact path="/registerStudent" element={<RegisterStudent />} />
+          <Route exact path="/registerTeacher" element={<RegisterTeacher />} />
+          <Route exact path="/dash/Student" element={<ListStudent />} />
+          <Route exact path="/dash/Teacher" element={<ListTeacher />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/Teacherapp" element={<TeacherHome />} />
           <Route
             exact
             path="/Teacherapp/applyTeacher"

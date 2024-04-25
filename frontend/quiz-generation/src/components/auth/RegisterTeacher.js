@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TeacherRegistration() {
+function RegisterTeacher() {
   return (
     <div>TeacherRegistration</div>
   )
 }
 
-export default TeacherRegistration
+export default RegisterTeacher;
