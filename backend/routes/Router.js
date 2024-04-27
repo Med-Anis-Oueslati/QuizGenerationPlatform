@@ -297,14 +297,13 @@ router.post(
 
 router.get("/allTeachers", async (req, res) => {
   try {
-    const teachers = await teacherModel.find();
-    res.status(200).send({ success: true, teachers: teachers });
+    const teachers = await teacherdb.find(
+      {},
+      { username: 1, email: 1, _id: 0 }
+    );
+    res.status(200).json(teachers);
   } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: `Error in fetching teachers ${error.message}`,
-    });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

@@ -12,7 +12,7 @@ const ListStudent = () => {
   const [studentsPerPage] = useState(7);
 
   useEffect(() => {
-    fetch("/allSatudents")
+    fetch("http://localhost:8009/allStudents")
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);
