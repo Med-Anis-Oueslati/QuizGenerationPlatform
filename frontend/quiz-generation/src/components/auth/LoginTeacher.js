@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./LoginTeacher.css";
 
-
+import { Link } from "react-router-dom";
 import { message, Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -86,9 +86,11 @@ function LoginTeacher() {
                 placeholder="Password"
               />
             </Form.Item>
-            <Button type="primary" htmlType="submit" className="btinn solid">
-              Login
-            </Button>
+            <Link to="/dashboard" className="signtxt">
+              <Button type="primary" htmlType="submit" className="btinn solid">
+                Login
+              </Button>
+            </Link>
           </Form>
           <Form className="form sign-up-form" onFinish={onFinish}>
             <h2 className="title">Sign up</h2>
@@ -137,7 +139,7 @@ function LoginTeacher() {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here ?</h3>
-            
+
             <button className="btinn transparent" onClick={handleSignUpClick}>
               Sign up
             </button>

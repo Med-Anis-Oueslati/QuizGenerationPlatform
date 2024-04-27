@@ -1,0 +1,52 @@
+.card1 {
+  margin-bottom: 20px;
+}
+
+.card1-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card1-text {
+  margin-bottom: 5px;
+}
+
+.modal-dialog {
+  max-width: 500px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}

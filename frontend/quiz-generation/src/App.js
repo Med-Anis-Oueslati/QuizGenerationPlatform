@@ -4,7 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home"; // Import your Home component
 import Auth from "./components/auth/Auth";
 import RegistrationForm from "./components/auth/RegistrationForm";
-import Dashboard from "./components/auth/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import Error from "./components/auth/Error";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
