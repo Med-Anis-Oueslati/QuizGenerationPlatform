@@ -111,7 +111,7 @@ function Dashboard() {
       </Container>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Studen</Modal.Title>
+          <Modal.Title>Add Student</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleAddStudent}>

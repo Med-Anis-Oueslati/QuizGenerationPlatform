@@ -25,7 +25,7 @@ function LoginTeacher() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/TeacherRegister", values);
+      const res = await axios.post("/registerTeacher", values);
       dispatch(hideLoading());
       if (res.data.success) {
         message.success("Register Successfully");
@@ -42,7 +42,7 @@ function LoginTeacher() {
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/Teacherlogin", values);
+      const res = await axios.post("/login", values);
       dispatch(hideLoading());
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
@@ -86,7 +86,7 @@ function LoginTeacher() {
                 placeholder="Password"
               />
             </Form.Item>
-            <Link to="/dashboard" className="signtxt">
+            <Link to="/teacherapp" className="signtxt">
               <Button type="primary" htmlType="submit" className="btinn solid">
                 Login
               </Button>

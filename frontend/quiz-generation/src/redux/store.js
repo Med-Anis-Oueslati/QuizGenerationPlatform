@@ -6,6 +6,6 @@ import { teacherSlice } from "./TeacherSlice";
 export default configureStore({
   reducer: {
     alerts: alertSlice.reducer,
-    doctor: teacherSlice.reducer,
+    teacher: teacherSlice.reducer,
   },
 });

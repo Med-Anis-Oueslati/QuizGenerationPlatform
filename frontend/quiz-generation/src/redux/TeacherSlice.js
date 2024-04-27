@@ -5,9 +5,9 @@ export const teacherSlice = createSlice({
     teacher: null,
   },
   reducers: {
-    setteacher: (state, action) => {
+    setTeacher: (state, action) => {
       state.teacher = action.payload;
     },
   },
 });
-export const { setDoctor } = teacherSlice.actions;
+export const { setTeacher } = teacherSlice.actions;

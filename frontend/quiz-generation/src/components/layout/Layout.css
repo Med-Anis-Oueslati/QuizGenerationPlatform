@@ -1,0 +1,81 @@
+.maiin{
+    padding:10px;
+    height:100vh;
+
+}
+.layouut{
+    display: flex;
+}
+.siidebaar{
+    min-height: 100%;
+    margin-top: -10px;
+    width: 400px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.544);
+    box-shadow: 0 0 2px gray;
+    margin-right: 20px;
+    color: white;
+}
+.connntent{
+    width: 100%;
+    height: 100%;
+}
+.heaadrr{
+    height: 10vh;
+    margin-bottom: 20px;
+    box-shadow: 0 0 2px gray;
+    
+}
+.boodyy{
+    height: 85vh;
+    margin-bottom: 20px;
+    box-shadow: 0 0 2px gray;
+    
+}
+.log h6{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0px;
+}
+.mennuuu-iteem{
+    margin-top: 30px;
+}
+.mennuuu-iteem a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.menuu{
+    margin-top: 5px;
+
+}
+.mennuuu-iteem i {
+    font-size: 1.2rem;
+    margin:0 15px ;
+}
+.actiive{
+    background-color: white;
+    padding: 10px;
+}
+.actiive a ,
+.actiive i{
+    color:  rgb(51 , 1, 1);
+}
+.heaadrr-connntent{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: flex-end;
+    margin: 0 15px;
+}
+.heaadrr-connntent i{
+    margin-right: 20px;
+    font-size:1.2rem ;
+}
+.heaadrr-connntent a{
+    color: blue;
+    font-size:1.5rem ;
+    text-decoration: none;
+    margin: 0 10px;
+    text-transform: uppercase;
+}
