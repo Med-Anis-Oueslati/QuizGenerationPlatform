@@ -25,10 +25,15 @@ function LoginTeacher() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/registerTeacher", values);
+      const res = await axios.post(
+        "http://localhost:8009/registerTeacher",
+        values
+      );
       dispatch(hideLoading());
       if (res.data.success) {
+        localStorage.setItem("token", res.data.token);
         message.success("Register Successfully");
+        navigate("/dashboard");
         setIsSignUp(false);
       } else {
         message.error(res.data.message);
@@ -42,22 +47,24 @@ function LoginTeacher() {
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/login", values);
+      const res = await axios.post(
+        "http://localhost:8009/loginTeacher",
+        values
+      );
       dispatch(hideLoading());
-      if (res.data.success) {
+      if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         message.success("Login Successfully");
-        // navigate.push("/Teacherapp/patients");
+        navigate("/teacherapp/students");
       } else {
-        message.error(res.data.message);
+        message.error(res.data.message || "Invalid credentials");
       }
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("something went wrong");
+      message.error("Something went wrong");
     }
   };
-
   return (
     <div className={`container12 ${isSignUp ? "sign-up-mode" : ""}`}>
       <div className="formss-container">
@@ -86,11 +93,10 @@ function LoginTeacher() {
                 placeholder="Password"
               />
             </Form.Item>
-            <Link to="/teacherapp" className="signtxt">
-              <Button type="primary" htmlType="submit" className="btinn solid">
-                Login
-              </Button>
-            </Link>
+
+            <Button type="primary" htmlType="submit" className="btinn solid">
+              Login
+            </Button>
           </Form>
           <Form className="form sign-up-form" onFinish={onFinish}>
             <h2 className="title">Sign up</h2>

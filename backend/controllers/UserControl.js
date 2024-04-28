@@ -12,22 +12,33 @@ const registerControllerForTeacher = async (req, res) => {
     if (existingTeacher) {
       return res
         .status(200)
-        .send({ message: "Teacher Already Exist", success: false });
+        .send({ message: "Teacher Already Exists", success: false });
     }
 
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-    req.body.password = hashedPassword;
-    const newTeacher = new teacherModel(req.body);
+    const { username, email, password } = req.body;
+
+    // Hash the password before saving to the database
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new teacher instance
+    const newTeacher = new teacherModel({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    // Save the new teacher to the database
     await newTeacher.save();
-    res.status(201).send({ message: "Register Successfully", success: true });
+
+    // Send success response
+    res
+      .status(201)
+      .send({ message: "Teacher Registered Successfully", success: true });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
-      success: false,
-      message: `Register Controller ${error.message}`,
-    });
+    res
+      .status(500)
+      .send({ message: "Error registering teacher", success: false });
   }
 };
 
@@ -59,30 +70,41 @@ const registerControllerForStudent = async (req, res) => {
 };
 //Login
 
+// Login a teacher
 const loginControllerForTeacher = async (req, res) => {
   try {
-    const teacher = await teacherModel.findOne({ email: req.body.email });
+    const { email, password } = req.body;
+
+    // Find the teacher by email
+    const teacher = await teacherModel.findOne({ email });
+
+    // If no teacher found, send error response
     if (!teacher) {
       return res
         .status(200)
-        .send({ message: "user not found", success: false });
+        .send({ message: "Invalid Email or Password", success: false });
     }
-    const isMatch = await bcrypt.compare(req.body.password, teacher.password);
+
+    // Compare passwords
+    const isMatch = await bcrypt.compare(password, teacher.password);
+
+    // If passwords don't match, send error response
     if (!isMatch) {
       return res
         .status(200)
         .send({ message: "Invalid Email or Password", success: false });
     }
+
+    // Generate JWT token
     const token = jwt.sign({ id: teacher._id }, keysecret, { expiresIn: "1d" });
-    res
-      .status(200)
-      .send({ message: "Login Success", success: true, token: token });
+
+    // Send success response with token
+    res.status(200).send({ message: "Login Successful", success: true, token });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: `Error in Login CTRL${error.message}` });
+    res.status(500).send({ message: "Error logging in", success: false });
   }
 };
-
 
 const loginControllerForStudent = async (req, res) => {
   try {
@@ -112,7 +134,7 @@ const loginControllerForStudent = async (req, res) => {
 
 const authControllerForTeacher = async (erq, res) => {
   try {
-    const teacher = await teacherModel.findOne({ _id: req.body.doctorId });
+    const teacher = await teacherModel.findOne({ _id: req.body.email });
     if (!teacher) {
       return res.status(200).send({
         message: "Teacher not found",
@@ -138,7 +160,7 @@ const authControllerForTeacher = async (erq, res) => {
 };
 const authControllerForStudent = async (erq, res) => {
   try {
-    const student = await studentModel.findOne({ _id: req.body.doctorId });
+    const student = await studentModel.findOne({ _id: req.body.email });
     if (!student) {
       return res.status(200).send({
         message: "Student not found",
@@ -230,5 +252,13 @@ const applyStudentController = async (req, res) => {
   }
 };
 
-
-module.exports = { registerControllerForTeacher , registerControllerForStudent, authControllerForStudent,authControllerForTeacher,applyStudentController,applyTeacherController,loginControllerForStudent,loginControllerForTeacher };
+module.exports = {
+  registerControllerForTeacher,
+  registerControllerForStudent,
+  authControllerForStudent,
+  authControllerForTeacher,
+  applyStudentController,
+  applyTeacherController,
+  loginControllerForStudent,
+  loginControllerForTeacher,
+};

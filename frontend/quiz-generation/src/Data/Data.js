@@ -10,6 +10,11 @@ export const SideBarMenu = [
     icon: "fas fa-file",
   },
   {
+    name: "Join Meet",
+    path: "/teacherapp/meet",
+    icon: "fas fa-file",
+  },
+  {
     name: "Logout",
     path: "/teacherapp/logout",
     icon: "fa-solid fa-right-from-bracket",
