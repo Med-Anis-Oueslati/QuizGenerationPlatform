@@ -1,33 +1,68 @@
+// models/StudentrModel.js
 const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-const StudentSchema = new mongoose.Schema(
-  {
-    userId: {
-      type: String,
-    },
-    firstName: {
-      type: String,
-      required: [true, "first name is required"],
-    },
-    lastName: {
-      type: String,
-      required: [true, "last name is required"],
-    },
-    phone: {
-      type: String,
-      required: [true, "phone no is required"],
-    },
-    email: {
-      type: String,
-      required: [true, "email is required"],
-    },
-    establishment: {
-      type: String,
-      required: [true, "establishment is required"],
+const keysecret = "aniskarimaniskarim";
+
+const StudentSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, "username is require"],
+  },
+  email: {
+    type: String,
+    required: [true, "email is require"],
+    unique: true,
+    validate(value) {
+      if (!validator.isEmail(value)) {
+        throw new Error("not valid email");
+      }
     },
   },
-  { timestamps: true }
-);
+  password: {
+    type: String,
+    required: [true, "password is require"],
+    minlength: 8,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  isStudent: {
+    type: Boolean,
+    default: true,
+  },
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+});
 
-const StudentModel = mongoose.model("Studentmoreexper", StudentSchema);
+StudentSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 12);
+  }
+  next();
+});
+
+// Token generation method
+StudentSchema.methods.generateAuthToken = async function () {
+  try {
+    const token = jwt.sign({ _id: this._id }, keysecret, { expiresIn: "1d" });
+    this.tokens = this.tokens.concat({ token });
+    await this.save();
+    return token;
+  } catch (error) {
+    throw new Error("Token generation failed");
+  }
+};
+
+const StudentModel = mongoose.model("Students", StudentSchema);
+
 module.exports = StudentModel;

@@ -12,7 +12,7 @@ const Logincard = () => {
         <div className="boutonBox">
           <h2> Welcome Teacher</h2>
           <div className="btnlogindoctor">
-            <Link className="myButton" to="/LoginTeacher">
+            <Link className="myButton" to="/loginTeacher">
               {" "}
               Log in{" "}
             </Link>
@@ -27,7 +27,7 @@ const Logincard = () => {
         <div className="boutonBox">
           <h2>Welcome Student</h2>
           <div className="btnlogindoctor">
-            <Link className="myButton" to="/LoginStudent">
+            <Link className="myButton" to="/loginStudent">
               {" "}
               Log in{" "}
             </Link>

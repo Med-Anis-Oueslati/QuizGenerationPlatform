@@ -24,10 +24,15 @@ function LoginStudent() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/TeacherRegister", values);
+      const res = await axios.post(
+        "http://localhost:8009/registerStudent",
+        values
+      );
       dispatch(hideLoading());
       if (res.data.success) {
+        localStorage.setItem("token", res.data.token);
         message.success("Register Successfully");
+        navigate("/dashboard");
         setIsSignUp(false);
       } else {
         message.error(res.data.message);
@@ -41,19 +46,22 @@ function LoginStudent() {
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/Teacherlogin", values);
+      const res = await axios.post(
+        "http://localhost:8009/loginStudent",
+        values
+      );
       dispatch(hideLoading());
-      if (res.data.success) {
+      if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         message.success("Login Successfully");
-        // navigate.push("/Teacherapp/patients");
+        navigate("/");
       } else {
-        message.error(res.data.message);
+        message.error(res.data.message || "Invalid credentials");
       }
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("something went wrong");
+      message.error("Something went wrong");
     }
   };
 
