@@ -1,0 +1,12 @@
+
+.home {
+    position: relative;
+
+    width: 100%;
+    height: 80vh;
+    background:url('../../assets/bg.jpg');
+    background-size: cover;
+    text-align: center;
+    padding-top: 10%;
+    margin-bottom: 155px;
+}

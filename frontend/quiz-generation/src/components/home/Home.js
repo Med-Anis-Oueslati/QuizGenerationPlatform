@@ -7,7 +7,7 @@ import "./Home.css";
 import Contactus from "../contactus/Contactus";
 import ServicePage from "../services/ServicePage";
 import Typewriter from "./TypeWriter";
-import LoginCard from "../auth/LoginCard"
+import LoginCard from "../auth/LoginCard";
 import { Link } from "react-router-dom";
 const Home = () => {
   useEffect(() => {
@@ -40,7 +40,8 @@ const Home = () => {
           </button>
         </div>
       </div>
-      
+      <ServicePage />
+      <Contactus />
     </div>
   );
 };

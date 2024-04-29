@@ -26,6 +26,7 @@ import LoginCard from "./components/auth/LoginCard";
 import LoginTeacher from "./components/auth/LoginTeacher";
 import LoginStudent from "./components/auth/LoginStudent";
 import Layout from "./components/layout/Layout";
+
 function App() {
   const { loading } = useSelector((state) => state.alerts);
 
@@ -41,7 +42,7 @@ function App() {
           <Route exact path="/LoginCard" element={<LoginCard />} />
           <Route exact path="/loginStudent" element={<LoginStudent />} />
           <Route exact path="/loginTeacher" element={<LoginTeacher />} />
-          <Route exact path="/dash/registerp" element={<RegistrationForm />} />
+          <Route exact path="/dash/register" element={<RegistrationForm />} />
           <Route exact path="/registerStudent" element={<RegisterStudent />} />
           <Route exact path="/registerTeacher" element={<RegisterTeacher />} />
           <Route exact path="/dash/Student" element={<ListStudent />} />
