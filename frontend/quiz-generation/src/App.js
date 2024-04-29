@@ -26,6 +26,7 @@ import LoginCard from "./components/auth/LoginCard";
 import LoginTeacher from "./components/auth/LoginTeacher";
 import LoginStudent from "./components/auth/LoginStudent";
 import Layout from "./components/layout/Layout";
+import ImportLearningMaterial from "./components/teacher/ImportLearningMaterial";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/teacherapp" element={<TeacherHome />} />
           <Route exact path="/teacherapp/students" element={<ListStudent />} />
+          <Route exact path="/teacherapp/ImportLearningMaterial" element={<ImportLearningMaterial />} />
           <Route
             exact
             path="/Teacherapp/applyTeacher"

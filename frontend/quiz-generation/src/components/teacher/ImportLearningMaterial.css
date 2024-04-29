@@ -1,0 +1,69 @@
+.import-learning-material {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.import-learning-material h1 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.import-learning-material form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.import-learning-material input[type="file"] {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.import-learning-material button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+.pat-cover {
+  width: 100%;
+  background-size: cover;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: #2ea3dd;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2ea3dd;
+  text-decoration: none;
+}
+
+.blue {
+  color: #ffffff;
+}
+.yellow {
+  color: #2ea3dd;
+}
+h1 {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: left;
+  color: #2ea3dd;
+}

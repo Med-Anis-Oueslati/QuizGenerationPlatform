@@ -1,5 +1,5 @@
 import React from "react";
-import './Layout.css'
+import "./Layout.css";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Avatar, Badge } from "antd";

@@ -6,7 +6,7 @@ export const SideBarMenu = [
   },
   {
     name: "Import learning material",
-    path: "/teacherapp/importLearningMaterial",
+    path: "/teacherapp/ImportLearningMaterial",
     icon: "fas fa-file",
   },
   {
