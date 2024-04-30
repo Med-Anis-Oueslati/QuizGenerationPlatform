@@ -31,7 +31,7 @@ router.post(
     check("username", "Username is required").notEmpty(),
     check("email", "Email is required").isEmail(),
     check("establishment", "Establishment is required").notEmpty(),
-    check("classes","Classesis required").notEmpty(),
+    check("classes", "Classes are required").notEmpty(),
     check("password", "Password is required").isLength({ min: 8 }),
   ],
   async (req, res) => {
@@ -42,7 +42,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email,establishment,classes, password } = req.body;
+      const { username, email, establishment, classes, password } = req.body;
 
       // Check if teacher already exists
       let existingTeacher = await TeacherModel.findOne({ email });
@@ -94,6 +94,7 @@ router.post(
     check("username", "Username is required").notEmpty(),
     check("email", "Email is required").isEmail(),
     check("establishment", "Establishment is required").notEmpty(),
+    check("clas", "Class is required").notEmpty(),
     check("password", "Password is required").isLength({ min: 8 }),
   ],
   async (req, res) => {
@@ -104,7 +105,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email,establishment, password } = req.body;
+      const { username, email, establishment, clas, password } = req.body;
 
       // Check if student already exists
       let existingStudent = await studentModel.findOne({ email });
@@ -119,7 +120,8 @@ router.post(
       const newStudent = new studentModel({
         username,
         email,
-        estatablishment,
+        establishment,
+        clas,
         password: hashedPassword,
       });
 

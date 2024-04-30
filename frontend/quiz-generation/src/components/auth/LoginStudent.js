@@ -123,12 +123,24 @@ function LoginStudent() {
             </Form.Item>
             <Form.Item
               name="establishment"
-              rules={[{ required: true, message: "Please input your establishment!" }]}
+              rules={[
+                { required: true, message: "Please input your establishment!" },
+              ]}
             >
               <Input
                 className="Doctorinput"
                 prefix={<i className="fas fa-user" />}
                 placeholder="your establishment"
+              />
+            </Form.Item>
+            <Form.Item
+              name="clas"
+              rules={[{ required: true, message: "Please input your class!" }]}
+            >
+              <Input
+                className="Doctorinput"
+                prefix={<i className="fas fa-user" />}
+                placeholder="your class"
               />
             </Form.Item>
             <Form.Item

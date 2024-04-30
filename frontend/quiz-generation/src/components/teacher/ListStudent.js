@@ -47,6 +47,7 @@ const ListStudent = () => {
               <tr className="co-td">
                 <th className="co-th">Username</th>
                 <th className="co-th">Establishment</th>
+                <th className="co-th">Class</th>
                 <th className="co-th">Email</th>
               </tr>
             </thead>
@@ -55,6 +56,8 @@ const ListStudent = () => {
                 <tr className="co-tr" key={index}>
                   <td className="co-td">{student.username}</td>
                   <td className="co-td">{student.establishment}</td>
+                  <td className="co-td">{student.clas}</td>
+
                   <td className="co-td">{student.email}</td>
                 </tr>
               ))}
