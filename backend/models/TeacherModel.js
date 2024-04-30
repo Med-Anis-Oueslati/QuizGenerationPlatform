@@ -21,6 +21,14 @@ const TeacherSchema = new mongoose.Schema({
       }
     },
   },
+  establishment: {
+    type: String,
+    required: [true, "establishment is require"],
+  },
+  classes: {
+    type: [String], // Array of strings representing class names
+    default: [],
+  },
   password: {
     type: String,
     required: [true, "password is require"],

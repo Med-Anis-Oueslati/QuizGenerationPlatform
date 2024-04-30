@@ -30,6 +30,8 @@ router.post(
   [
     check("username", "Username is required").notEmpty(),
     check("email", "Email is required").isEmail(),
+    check("establishment", "Establishment is required").notEmpty(),
+    check("classes","Classesis required").notEmpty(),
     check("password", "Password is required").isLength({ min: 8 }),
   ],
   async (req, res) => {
@@ -40,7 +42,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email, password } = req.body;
+      const { username, email,establishment,classes, password } = req.body;
 
       // Check if teacher already exists
       let existingTeacher = await TeacherModel.findOne({ email });
@@ -55,6 +57,8 @@ router.post(
       const newTeacher = new TeacherModel({
         username,
         email,
+        establishment,
+        classes,
         password: hashedPassword,
       });
 
@@ -64,7 +68,7 @@ router.post(
       res.status(201).json({ message: "Teacher registered successfully" });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: "Internal asba error" });
     }
   }
 );
@@ -89,6 +93,7 @@ router.post(
   [
     check("username", "Username is required").notEmpty(),
     check("email", "Email is required").isEmail(),
+    check("establishment", "Establishment is required").notEmpty(),
     check("password", "Password is required").isLength({ min: 8 }),
   ],
   async (req, res) => {
@@ -99,7 +104,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email, password } = req.body;
+      const { username, email,establishment, password } = req.body;
 
       // Check if student already exists
       let existingStudent = await studentModel.findOne({ email });
@@ -114,6 +119,7 @@ router.post(
       const newStudent = new studentModel({
         username,
         email,
+        estatablishment,
         password: hashedPassword,
       });
 

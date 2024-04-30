@@ -45,12 +45,16 @@ const ListStudent = () => {
           <table className="containerpatient">
             <thead className="co-thread">
               <tr className="co-td">
+                <th className="co-th">Username</th>
+                <th className="co-th">Establishment</th>
                 <th className="co-th">Email</th>
               </tr>
             </thead>
             <tbody className="co-tbody">
               {currentStudents.map((student, index) => (
                 <tr className="co-tr" key={index}>
+                  <td className="co-td">{student.username}</td>
+                  <td className="co-td">{student.establishment}</td>
                   <td className="co-td">{student.email}</td>
                 </tr>
               ))}

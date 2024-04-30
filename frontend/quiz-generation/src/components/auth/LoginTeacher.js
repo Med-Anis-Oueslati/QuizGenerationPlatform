@@ -123,6 +123,32 @@ function LoginTeacher() {
               />
             </Form.Item>
             <Form.Item
+              name="establishment"
+              rules={[
+                { required: true, message: "Please input your establishment!" },
+              ]}
+            >
+              <Input
+                className="Doctorinput"
+                prefix={<i className="fas fa-envelope" />}
+                placeholder="Establishment"
+              />
+            </Form.Item>
+            <Form.Item
+              name="classes"
+              rules={[
+                {
+                  required: true,
+                  message: "Please specify the classes you handle!",
+                },
+              ]}
+            >
+              <Input.TextArea
+                className="Doctorinput"
+                placeholder="Enter comma-separated class names (e.g., Math, Science)"
+              />
+            </Form.Item>
+            <Form.Item
               name="password"
               rules={[
                 { required: true, message: "Please input your password!" },

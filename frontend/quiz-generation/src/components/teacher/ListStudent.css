@@ -3,7 +3,6 @@
 
 .pat-cover {
   width: 100%;
-  background: url("../../assets/students.jpg");
   background-size: cover;
 }
 

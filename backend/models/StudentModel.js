@@ -21,6 +21,10 @@ const StudentSchema = new mongoose.Schema({
       }
     },
   },
+  establishment: {
+    type: String,
+    required: [true, "establishment is require"],
+  },
   password: {
     type: String,
     required: [true, "password is require"],
