@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken"); // Add this line to import the jwt module
-
+const fileupload = require("express-fileupload");
+const pdfparse = require("pdf-parse");
 const router = new express.Router();
 const teacherdb = require("../models/TeacherModel");
 const studentdb = require("../models/StudentSchema");
@@ -105,7 +106,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email, establishment,clas, password } = req.body;
+      const { username, email, establishment, clas, password } = req.body;
 
       // Check if student already exists
       let existingStudent = await studentModel.findOne({ email });
@@ -121,7 +122,7 @@ router.post(
         username,
         email,
         establishment,
-        clas, 
+        clas,
         password: hashedPassword,
       });
 
@@ -273,6 +274,7 @@ router.get("/logoutStudent", AuthentificateStudent, async (req, res) => {
 router.get("/allStudents", async (req, res) => {
   try {
     // Fetch all students from the database
+    const teachers = await TeacherModel.find({});
     const students = await studentModel.find();
 
     // Send the list of students as JSON response

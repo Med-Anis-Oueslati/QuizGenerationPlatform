@@ -1,64 +1,68 @@
 
 
-.import-learning-material h1 {
-  margin-top: 0;
-  margin-bottom: 15px;
+
+
+.App {
+ text-align: center;
+ color: #333;
 }
 
-.import-learning-material form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.formStyle {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 10px;
+ padding: 20px;
+ border: 1px solid #ccc;
+ border-radius: 10px;
+ background-color: #f9f9f9;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.import-learning-material input[type="file"] {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+.form-control {
+ width: 100%;
+ padding: 10px;
+ border-radius: 5px;
+ border: 1px solid #ccc;
 }
 
-.import-learning-material button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+.btn {
+ padding: 10px 20px;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
-.pat-cover {
-  width: 100%;
-  background-size: cover;
+.btn-primary {
+ background-color: #007bff;
+ color: #fff;
 }
 
-h2 {
-  font-size: 1em;
-  font-weight: 300;
-  text-align: center;
-  display: block;
-  line-height: 1em;
-  padding-bottom: 2em;
-  color: #2ea3dd;
+.btn-primary:hover {
+ background-color: #0056b3;
 }
 
-h2 a {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #2ea3dd;
-  text-decoration: none;
+.uploaded {
+ margin-top: 20px;
 }
 
-.blue {
-  color: #ffffff;
+.output-div {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 20px;
 }
-.yellow {
-  color: #2ea3dd;
+
+.inner-div {
+ background-color: #f9f9f9;
+ padding: 10px;
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-h1 {
-  font-weight: bold;
-  font-size: 30px;
-  text-align: left;
-  color: #2ea3dd;
+
+@media (max-width: 768px) {
+ .pat-cover {
+    width: 95%;
+ }
 }
