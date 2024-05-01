@@ -145,7 +145,7 @@ function LoginTeacher() {
             >
               <Input.TextArea
                 className="Doctorinput"
-                placeholder="Enter comma-separated class names (e.g., Math, Science)"
+                placeholder="Enter comma-separated class names (e.g., II1C, II2C ...)"
               />
             </Form.Item>
             <Form.Item

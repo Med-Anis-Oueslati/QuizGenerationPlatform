@@ -105,7 +105,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { username, email, establishment, clas, password } = req.body;
+      const { username, email, establishment,clas, password } = req.body;
 
       // Check if student already exists
       let existingStudent = await studentModel.findOne({ email });
@@ -121,7 +121,7 @@ router.post(
         username,
         email,
         establishment,
-        clas,
+        clas, 
         password: hashedPassword,
       });
 
