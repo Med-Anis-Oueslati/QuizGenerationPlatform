@@ -16,7 +16,7 @@ const ImportLearningMaterial = () => {
     getPdf();
   }, []);
   const getPdf = async () => {
-    const result = await axios.get("http://localhost:5000/get-files");
+    const result = await axios.get("http://localhost:27017/get-files");
     console.log(result.data.data);
     setAllImage(result.data.data);
   };
@@ -29,7 +29,7 @@ const ImportLearningMaterial = () => {
     console.log(title, file);
 
     const result = await axios.post(
-      "http://localhost:5000/upload-files",
+      "http://localhost:27017/upload-files",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -42,7 +42,7 @@ const ImportLearningMaterial = () => {
     }
   };
   const showPdf = (pdf) => {
-    window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
+    window.open(`http://localhost:27017/files/${pdf}`, "_blank", "noreferrer");
   };
   return (
     <div className="import-learning-material">

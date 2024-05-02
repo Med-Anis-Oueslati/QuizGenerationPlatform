@@ -7,13 +7,14 @@ const router = require("./routes/Router");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const port = 8009;
+const parse = require("./pdfParser/Parse");
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies
 app.use(cors()); // Enable CORS
 app.use(router); // Mount router
-
+app.use(parse); // Parse
 // Start the server
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
