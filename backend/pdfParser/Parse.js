@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
-
+const axios = require("axios");
 const app = express();
-
+const fs = require("fs");
 require("./pdfDetails");
 const PdfSchema = mongoose.model("PdfDetails");
 // Middleware to parse JSON bodies
@@ -47,6 +47,22 @@ app.post("/upload-files", uploadMiddleware, async (req, res) => {
     console.log("upload failed");
   }
 });
+// Route to handle file uploads
+app.post("/upload-files-back-flask", uploadMiddleware, async (req, res) => {
+  console.log(req.file);
+  const title = req.body.title;
+  const fileName = req.file.filename;
+  try {
+    await PdfSchema.create({ title: title, pdf: fileName });
+
+    // Move success response here after successful axios call
+    res.send({ status: "ok" });
+    console.log("uploading to react");
+  } catch (error) {
+    res.json({ status: error });
+    console.log("upload failed");
+  }
+});
 
 // Route to get files
 app.get("/get-files", async (req, res) => {
@@ -62,7 +78,7 @@ app.get("/get-files", async (req, res) => {
 app.get("/", async (req, res) => {
   res.send("Success!!!!!!");
 });
-app.listen(27017, () => {
+app.listen(5000, () => {
   console.log("Server Started");
 });
 module.exports = uploadMiddleware;
